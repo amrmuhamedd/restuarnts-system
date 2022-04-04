@@ -21,7 +21,7 @@ export class RestaurantService {
     @InjectModel(Restaurant.name)
     private RestaurantModel: Model<RestaurantDocumenet>,
   ) {}
-  // ** add new resturant
+
   async create(restaurant: CreateResturantDto, userId) {
     const isExist = await this.RestaurantModel.findOne({
       unique_name: restaurant.unique_name,
@@ -40,7 +40,7 @@ export class RestaurantService {
       },
     });
   }
-  // ** update resturant
+
   async update(id: string, resturantInfo: UpdateResturantDto, userId) {
     const restaurant = await this.RestaurantModel.find({ userId, _id: id });
     if (!restaurant) {
@@ -56,7 +56,7 @@ export class RestaurantService {
       throw new InternalServerErrorException();
     }
   }
-  // ! Delete resturant
+
   async delete(id: string, userId) {
     const restaurant = await this.RestaurantModel.find({ userId, _id: id });
     if (!restaurant) {
@@ -72,35 +72,33 @@ export class RestaurantService {
       throw new InternalServerErrorException();
     }
   }
-  // ** get all Resturant with cuisin filter
+
   async getAllRestaurant(filters: AllRestaurantFilter) {
     return await this.RestaurantModel.find(filters);
   }
 
-  // ** get all Resturant with id or unique name filter
   async getResturant(filters: ResturantDetailsFilter) {
     const isExist = await this.RestaurantModel.findOne({
       ...filters,
     });
-    // ** validate existance of the requested resturant
     if (!isExist) {
       throw new BadRequestException({
         status: '400',
         message: 'there is no resturant with provided info',
       });
     }
-    if (!filters._id && !filters.unique_name) {
+    if (filters._id || filters.unique_name) {
+      return await this.RestaurantModel.findOne({
+        ...filters,
+      });
+    } else {
       throw new NotFoundException({
         status: '400',
         message: 'you should send id or unique_name',
       });
     }
-    return await this.RestaurantModel.findOne({
-      ...filters,
-    });
   }
 
-  // ** get nearset Resturant 1 km from provided location (long , lat)
   async getNearsetResturant(filters: LocationDto) {
     const restaurants = await this.RestaurantModel.find({
       location: {

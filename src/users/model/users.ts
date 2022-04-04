@@ -1,10 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import * as mongoose from 'mongoose';
-import { Location } from 'src/shared/Model/location';
-import { CreateResturantDto } from 'src/restaurant/restaurant.Dto/creatRestaurant.dto';
 export type UsersDocumenet = User & Document;
-// import { Products } from 'src/products/models/products';
 
 @Schema({
   timestamps: true,

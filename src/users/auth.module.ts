@@ -4,7 +4,6 @@ import { LocalStartegy } from './strategy/local.sratgy';
 import { PassportModule } from '@nestjs/passport';
 import { AuthController } from './auth.controller';
 import { JwtModule } from '@nestjs/jwt';
-import { jwtConstats } from './constant/constants';
 import { JwtStrategy } from './strategy/jwt.stratgy';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './model/users';
@@ -13,7 +12,7 @@ import { User, UserSchema } from './model/users';
   imports: [
     PassportModule,
     JwtModule.register({
-      secret: jwtConstats.secret,
+      secret: process.env.secret,
       signOptions: { expiresIn: '2d' },
     }),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
