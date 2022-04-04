@@ -1,5 +1,6 @@
 ## Resturant Manage system
 
+Docs live preview [here](https://amr-resturant.herokuapp.com/docs/)
 Backend useing Nest js for resturant
 
 <br />
