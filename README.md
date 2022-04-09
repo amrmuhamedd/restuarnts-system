@@ -4,7 +4,7 @@ Docs live preview (swagger ui) [here](https://amr-resturant.herokuapp.com/docs/)
 </br>
 Docs live preview (postman) [here](https://documenter.getpostman.com/view/14303754/UVyuREXN)
 </br>
-Backend useing Nest js for resturant
+Restaurant management system use Nest js and mongo geo special to find nearest restaurant by 1 km
 
 <br />
 
