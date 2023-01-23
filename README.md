@@ -1,6 +1,6 @@
 ## Resturant Manage system
 
-Docs live preview (swagger ui) [here](https://amr-resturant.herokuapp.com/docs/)
+Docs live preview (swagger ui) [here](https://e-commerce-0tqz.onrender.com/docs/)
 </br>
 Docs live preview (postman) [here](https://documenter.getpostman.com/view/14303754/UVyuREXN)
 </br>
